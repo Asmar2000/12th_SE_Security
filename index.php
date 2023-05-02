@@ -25,13 +25,35 @@ if (isset($_SESSION["user_id"])) {
 <body>
     
     <h1>Home</h1>
-    #Broken Authentication handling
     <?php if (isset($user)): ?>
         
         <p>Hello <?= htmlspecialchars($user["name"]) ?></p>
         
         <p><a href="logout.php">Log out</a></p>
-        
+        <h1 align="center"> Presistant XSS Attach</h1>
+    <table align="center">
+        <tr><td>
+            <form action="presistant.php" method="post">
+                <textarea row="6" cols="55" name ="comment" placeholder="Leave your comment" maxlength="400"></textarea>
+                <table align="center">
+                    <tr><td>
+                        <input type="submit" name="Comment"/>
+                    </td></tr>
+                </table>
+            </form>
+        </td></tr>
+    </table>
+<br>
+<br>
+<table align="center">
+<tr><td>
+    <form action="presistant.php" method="post">
+    Clear Table: <input type="submit" name="clear" value="Clear Table"/>
+    </form>
+
+</td></tr>
+
+</table>
     <?php else: ?>
         
         <p><a href="login.php">Log in</a> or <a href="signup.html">sign up</a></p>
@@ -40,14 +62,3 @@ if (isset($_SESSION["user_id"])) {
     
 </body>
 </html>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
